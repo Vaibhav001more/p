@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InvestIQ v2 — Your First Step to Financial Freedom</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Chart.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+<!-- ── Stylesheets ── -->
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/hero.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/tools.css">
+</head>
+<body>
+
+<!-- ── Custom Cursor ── -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ════════════ NAV ════════════ -->
+<nav>
+  <div class="logo">Invest<span>IQ</span>
+    <span style="font-size:0.65rem;color:var(--muted);font-family:'Space Mono',monospace;margin-left:4px">v2</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#learn"      data-en="Learn"      data-hi="सीखें">Learn</a></li>
+    <li><a href="#calculator" data-en="Calculator" data-hi="कैलकुलेटर">Calculator</a></li>
+    <li><a href="#compare"    data-en="Compare"    data-hi="तुलना">Compare</a></li>
+    <li><a href="#budget"     data-en="Budget"     data-hi="बजट">Budget</a></li>
+    <li><a href="#goals"      data-en="Goals"      data-hi="लक्ष्य">Goals</a></li>
+    <li><a href="#risk"       data-en="Risk Quiz"  data-hi="जोखिम परीक्षा">Risk Quiz</a></li>
+    <li><a href="#learn" class="nav-cta" data-en="Get Started →" data-hi="शुरू करें →">Get Started →</a></li>
+  </ul>
+  <div class="nav-controls">
+    <button class="ctrl-btn" id="langBtn"  onclick="toggleLang()">🇮🇳 हिन्दी</button>
+    <button class="ctrl-btn" id="themeBtn" onclick="toggleTheme()">☀️ Light</button>
+  </div>
+</nav>
+
+<!-- ════════════ TICKER ════════════ -->
+<div class="ticker-wrap" style="margin-top:64px">
+  <div class="ticker-track">
+    <div class="ticker-item"><span class="ticker-sym">NIFTY 50</span><span class="ticker-price">24,780</span><span class="ticker-chg green">▲ 1.2%</span></div>
+    <div class="ticker-item"><span class="ticker-sym">SENSEX</span><span class="ticker-price">81,520</span><span class="ticker-chg green">▲ 0.9%</span></div>
+    <div class="ticker-item"><span class="ticker-sym">RELIANCE</span><span class="ticker-price">₹2,891</span><span class="ticker-chg red">▼ 0.3%</span></div>
+    <div class="ticker-item"><span class="ticker-sym">TCS</span><span class="ticker-price">₹4,120</span><span class="ticker-chg green">▲ 0.7%</span></div>
+    <div class="ticker-item"><span class="ticker-sym">INFY</span><span class="ticker-price">₹1,560</span><span class="ticker-chg green">▲ 1.4%</span></div>
+    <div class="ticker-item"><span class="ticker-sym">HDFC BANK</span><span class="ticker-price">₹1,780</span><span class="ticker-chg red">▼ 0.2%</span></div>
+    <div class="ticker-item"><span class="ticker-sym">GOLD</span><span class="ticker-price">₹72,400/10g</span><span class="ticker-chg green">▲ 0.5%</span></div>
+    <div class="ticker-item"><span class="ticker-sym">BTC/INR</span><span class="ticker-price">₹71,24,000</span><span class="ticker-chg green">▲ 2.1%</span></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="ticker-item"><span class="ticker-sym">NIFTY 50</span><span class="ticker-price">24,780</span><span class="ticker-chg green">▲ 1.2%</span></div>
+    <div class="ticker-item"><span class="ticker-sym">SENSEX</span><span class="ticker-price">81,520</span><span class="ticker-chg green">▲ 0.9%</span></div>
+    <div class="ticker-item"><span class="ticker-sym">RELIANCE</span><span class="ticker-price">₹2,891</span><span class="ticker-chg red">▼ 0.3%</span></div>
+    <div class="ticker-item"><span class="ticker-sym">TCS</span><span class="ticker-price">₹4,120</span><span class="ticker-chg green">▲ 0.7%</span></div>
+    <div class="ticker-item"><span class="ticker-sym">INFY</span><span class="ticker-price">₹1,560</span><span class="ticker-chg green">▲ 1.4%</span></div>
+    <div class="ticker-item"><span class="ticker-sym">HDFC BANK</span><span class="ticker-price">₹1,780</span><span class="ticker-chg red">▼ 0.2%</span></div>
+    <div class="ticker-item"><span class="ticker-sym">GOLD</span><span class="ticker-price">₹72,400/10g</span><span class="ticker-chg green">▲ 0.5%</span></div>
+    <div class="ticker-item"><span class="ticker-sym">BTC/INR</span><span class="ticker-price">₹71,24,000</span><span class="ticker-chg green">▲ 2.1%</span></div>
+  </div>
+</div>
+
+<!-- ════════════ HERO ════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge" data-en="✦ India's #1 Investment Guide for Beginners" data-hi="✦ शुरुआती निवेशकों के लिए भारत का नं. 1 गाइड">
+      ✦ India's #1 Investment Guide for Beginners
+    </div>
+    <h1>Grow Your<br>
+      <span class="highlight" data-en="Wealth" data-hi="संपदा">Wealth</span><br>Smartly.
+    </h1>
+    <p class="hero-sub"
+       data-en="Zero jargon. Zero confusion. Just clear, practical guidance to start your investment journey — whether you have ₹500 or ₹5,00,000."
+       data-hi="कोई जटिल भाषा नहीं। कोई भ्रम नहीं। बस स्पष्ट मार्गदर्शन — चाहे आपके पास ₹500 हो या ₹5,00,000।">
+      Zero jargon. Zero confusion. Just clear, practical guidance to start your investment journey — whether you have ₹500 or ₹5,00,000.
+    </p>
+    <div class="hero-btns">
+      <button class="btn-primary"
+        data-en="Start Learning Free" data-hi="मुफ्त में सीखें"
+        onclick="document.getElementById('learn').scrollIntoView({behavior:'smooth'})">
+        Start Learning Free
+      </button>
+      <button class="btn-ghost"
+        data-en="Try Calculator →" data-hi="कैलकुलेटर →"
+        onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth'})">
+        Try Calculator →
+      </button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-num">12K+</span><span class="stat-label" data-en="Beginners Guided" data-hi="शुरुआती निवेशक">Beginners Guided</span></div>
+      <div class="stat-item"><span class="stat-num">40+</span><span class="stat-label" data-en="Investment Topics" data-hi="निवेश विषय">Investment Topics</span></div>
+      <div class="stat-item"><span class="stat-num" data-en="Free" data-hi="मुफ्त">Free</span><span class="stat-label" data-en="Always & Forever" data-hi="हमेशा के लिए">Always & Forever</span></div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="portfolio-card">
+      <div class="card-header">
+        <span class="card-title">My Portfolio</span>
+        <span class="card-badge">+18.4% YTD</span>
+      </div>
+      <div class="portfolio-value">₹1,84,250</div>
+      <div class="portfolio-change">▲ ₹28,710 this year</div>
+      <svg class="chart-svg" viewBox="0 0 340 72" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#00e676" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#00e676" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <path d="M0,60 L40,52 L80,56 L120,44 L160,32 L200,24 L240,16 L280,10 L340,5 L340,72 L0,72 Z" fill="url(#cg)"/>
+        <path d="M0,60 L40,52 L80,56 L120,44 L160,32 L200,24 L240,16 L280,10 L340,5" fill="none" stroke="#00e676" stroke-width="2"/>
+      </svg>
+      <div class="holdings">
+        <div class="holding-item">
+          <div class="holding-left"><div class="holding-icon" style="background:rgba(33,150,243,0.1);color:#2196f3">M</div><div><div class="holding-name">Mutual Funds</div><div class="holding-shares">SIP ₹5,000/mo</div></div></div>
+          <div class="holding-right"><div class="holding-val">₹92,000</div><div class="holding-pct green">▲ 22.1%</div></div>
+        </div>
+        <div class="holding-item">
+          <div class="holding-left"><div class="holding-icon" style="background:rgba(255,193,7,0.1);color:#ffc107">G</div><div><div class="holding-name">Digital Gold</div><div class="holding-shares">48.2 grams</div></div></div>
+          <div class="holding-right"><div class="holding-val">₹52,800</div><div class="holding-pct green">▲ 12.4%</div></div>
+        </div>
+        <div class="holding-item">
+          <div class="holding-left"><div class="holding-icon" style="background:rgba(0,230,118,0.1);color:#00e676">F</div><div><div class="holding-name">Fixed Deposit</div><div class="holding-shares">6.9% p.a.</div></div></div>
+          <div class="holding-right"><div class="holding-val">₹39,450</div><div class="holding-pct green">▲ 6.9%</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="tag-float tag1" style="color:var(--gold)">🏆 Beat Inflation!</div>
+    <div class="tag-float tag2" style="color:var(--accent)">💡 Start with ₹100</div>
+  </div>
+</section>
+
+<!-- ════════════ HOW IT WORKS ════════════ -->
+<section class="hiw">
+  <div class="section-label" data-en="How It Works" data-hi="यह कैसे काम करता है">How It Works</div>
+  <div class="section-title" data-en="4 Steps to Your Investment Journey" data-hi="आपकी निवेश यात्रा के 4 चरण">4 Steps to Your<br>Investment Journey</div>
+  <div class="hiw-grid reveal">
+    <div class="hiw-card"><div class="hiw-num">01</div><div class="hiw-icon">🎯</div><h3 data-en="Set Your Goal" data-hi="अपना लक्ष्य तय करें">Set Your Goal</h3><p data-en="Emergency fund? Retirement? House? Define what you're investing for and in how long." data-hi="आपातकालीन फंड? रिटायरमेंट? घर? तय करें किसलिए और कितने समय में।">Emergency fund? Retirement? House? Define what you're investing for and in how long.</p></div>
+    <div class="hiw-card"><div class="hiw-num">02</div><div class="hiw-icon">🧠</div><h3 data-en="Know Your Risk" data-hi="अपना जोखिम जानें">Know Your Risk</h3><p data-en="Take our quick quiz to understand how much risk you can handle. No wrong answers!" data-hi="हमारी परीक्षा लें और जानें कि आप कितना जोखिम उठा सकते हैं।">Take our quick quiz to understand how much risk you can handle. No wrong answers!</p></div>
+    <div class="hiw-card"><div class="hiw-num">03</div><div class="hiw-icon">📚</div><h3 data-en="Learn the Basics" data-hi="मूल बातें सीखें">Learn the Basics</h3><p data-en="Read bite-sized guides on SIP, mutual funds, stocks, FD — all in plain language." data-hi="SIP, म्यूचुअल फंड, स्टॉक, FD पर छोटे-छोटे गाइड — सरल भाषा में।">Read bite-sized guides on SIP, mutual funds, stocks, FD — all in plain language.</p></div>
+    <div class="hiw-card"><div class="hiw-num">04</div><div class="hiw-icon">🚀</div><h3 data-en="Start Investing" data-hi="निवेश शुरू करें">Start Investing</h3><p data-en="Use our calculator to plan your SIP and take your first step with confidence." data-hi="कैलकुलेटर से SIP प्लान करें और आत्मविश्वास के साथ पहला कदम उठाएं।">Use our calculator to plan your SIP and take your first step with confidence.</p></div>
+  </div>
+</section>
+
+<!-- ════════════ LEARN ════════════ -->
+<section id="learn">
+  <div class="section-label" data-en="Knowledge Hub" data-hi="ज्ञान केंद्र">Knowledge Hub</div>
+  <div class="section-title" data-en="Everything You Need to Know" data-hi="वह सब जो जानना चाहिए">Everything You Need<br>to Know</div>
+  <p class="section-sub" data-en="From complete beginner to confident investor — explore at your own pace." data-hi="पूर्ण शुरुआती से आत्मविश्वासी निवेशक तक।">From complete beginner to confident investor — explore topics at your own pace.</p>
+
+  <div class="learn-grid reveal">
+    <div class="learn-main">
+      <div class="topic-card"><div class="topic-icon" style="background:rgba(0,230,118,0.1)">💰</div><div class="topic-content"><h4>What is Investing & Why Start Early?</h4><p>Understand compound interest and why even ₹500/month matters if you start at 21.</p><span class="topic-badge badge-beginner">Beginner</span></div></div>
+      <div class="topic-card"><div class="topic-icon" style="background:rgba(33,150,243,0.1)">📊</div><div class="topic-content"><h4>Mutual Funds & SIP Explained</h4><p>What is NAV? What's ELSS? How does a SIP actually work? All explained simply.</p><span class="topic-badge badge-beginner">Beginner</span></div></div>
+      <div class="topic-card"><div class="topic-icon" style="background:rgba(255,193,7,0.1)">🏦</div><div class="topic-content"><h4>FD, PPF, NPS & Safe Investments</h4><p>Low-risk options for capital preservation. Ideal for emergency funds and short-term goals.</p><span class="topic-badge badge-beginner">Beginner</span></div></div>
+      <div class="topic-card"><div class="topic-icon" style="background:rgba(156,39,176,0.1)">📈</div><div class="topic-content"><h4>Stock Market Basics — Stocks, NSE, BSE</h4><p>How to read a stock chart, P/E ratio, and how to open a Demat account.</p><span class="topic-badge badge-inter">Intermediate</span></div></div>
+      <div class="topic-card"><div class="topic-icon" style="background:rgba(0,150,136,0.1)">🛡️</div><div class="topic-content"><h4>Tax Saving & Section 80C Investments</h4><p>Invest smartly and save taxes using ELSS, PPF, NPS & more.</p><span class="topic-badge badge-adv">Advanced</span></div></div>
+    </div>
+
+    <div>
+      <div class="glossary-box">
+        <h3>📖 <span data-en="Investment Glossary" data-hi="निवेश शब्दकोश">Investment Glossary</span></h3>
+        <input class="glossary-search" type="text" id="glossarySearch" placeholder="Search terms..." oninput="filterGlossary()">
+        <div class="glossary-terms" id="glossaryTerms">
+          <div class="term-item"><div class="term-word">SIP</div><div class="term-def" data-en="Systematic Investment Plan — invest a fixed amount monthly automatically." data-hi="व्यवस्थित निवेश योजना — हर महीने एक निश्चित राशि स्वचालित रूप से निवेश करें।">Systematic Investment Plan — invest a fixed amount monthly automatically.</div></div>
+          <div class="term-item"><div class="term-word">NAV</div><div class="term-def" data-en="Net Asset Value — price of one unit of a mutual fund on any given day." data-hi="शुद्ध संपत्ति मूल्य — किसी भी दिन म्यूचुअल फंड की एक इकाई की कीमत।">Net Asset Value — price of one unit of a mutual fund on any given day.</div></div>
+          <div class="term-item"><div class="term-word">Compound Interest</div><div class="term-def" data-en="Earning interest on your interest — the magic that makes wealth grow exponentially." data-hi="अपने ब्याज पर ब्याज कमाना — वह जादू जो संपत्ति को तेजी से बढ़ाता है।">Earning interest on your interest — the magic that makes wealth grow exponentially.</div></div>
+          <div class="term-item"><div class="term-word">Diversification</div><div class="term-def" data-en="Spreading money across different assets to reduce risk. Don't put all eggs in one basket." data-hi="जोखिम कम करने के लिए विभिन्न संपत्तियों में पैसा फैलाएं।">Spreading money across different assets to reduce risk. Don't put all eggs in one basket.</div></div>
+          <div class="term-item"><div class="term-word">P/E Ratio</div><div class="term-def" data-en="Price-to-Earnings ratio — how much you're paying for ₹1 of a company's earnings." data-hi="मूल्य-से-आय अनुपात — आप एक कंपनी की ₹1 कमाई के लिए कितना भुगतान कर रहे हैं।">Price-to-Earnings ratio — how much you're paying for ₹1 of a company's earnings.</div></div>
+          <div class="term-item"><div class="term-word">Demat Account</div><div class="term-def" data-en="Electronic account to hold shares. Required to invest in Indian stock market." data-hi="शेयर रखने के लिए इलेक्ट्रॉनिक खाता। भारतीय शेयर बाजार में निवेश के लिए जरूरी।">Electronic account to hold shares. Required to invest in Indian stock market.</div></div>
+          <div class="term-item"><div class="term-word">ELSS</div><div class="term-def" data-en="Equity Linked Saving Scheme — tax-saving mutual fund with 3-year lock-in." data-hi="3 साल के लॉक-इन के साथ टैक्स-बचत म्यूचुअल फंड।">Equity Linked Saving Scheme — tax-saving mutual fund with 3-year lock-in.</div></div>
+          <div class="term-item"><div class="term-word">Bull & Bear Market</div><div class="term-def" data-en="Bull = rising prices. Bear = falling prices. Normal cycles every investor must understand." data-hi="बुल = बढ़ती कीमतें। बेयर = गिरती कीमतें। हर निवेशक को सामान्य चक्र समझना चाहिए।">Bull = rising prices. Bear = falling prices. Normal cycles every investor must understand.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ SIP CALCULATOR ════════════ -->
+<section id="calculator" class="calc-section">
+  <div class="section-label" data-en="SIP Calculator" data-hi="SIP कैलकुलेटर">SIP Calculator</div>
+  <div class="section-title" data-en="See Your Money Grow" data-hi="अपना पैसा बढ़ते देखें">See Your Money Grow</div>
+  <p class="section-sub" data-en="Calculate how your monthly SIP compounds into wealth over time." data-hi="देखें कि आपका मासिक SIP समय के साथ कैसे धन में बदलता है।">Calculate how your monthly SIP compounds into wealth over time.</p>
+
+  <div class="calc-wrapper reveal">
+    <div class="calc-box">
+      <h3>📟 <span data-en="Enter Your Details" data-hi="अपनी जानकारी दर्ज करें">Enter Your Details</span></h3>
+      <div class="input-group">
+        <label data-en="Monthly Investment Amount" data-hi="मासिक निवेश राशि">Monthly Investment Amount</label>
+        <div class="input-row"><span class="input-prefix">₹</span>
+          <input class="calc-input" type="number" id="sipAmount" value="5000" min="100">
+        </div>
+      </div>
+      <div class="input-group">
+        <label>Expected Annual Return: <strong id="returnLabel" style="color:var(--accent)">12%</strong></label>
+        <input class="range-input" type="range" id="returnRate" min="6" max="24" value="12">
+        <div class="range-labels"><span>6% (FD)</span><span>12% (MF)</span><span>24% (High Risk)</span></div>
+      </div>
+      <div class="input-group">
+        <label>Investment Period: <strong id="yearLabel" style="color:var(--accent)">10 Years</strong></label>
+        <input class="range-input" type="range" id="years" min="1" max="40" value="10">
+        <div class="range-labels"><span>1 yr</span><span>20 yrs</span><span>40 yrs</span></div>
+      </div>
+      <button class="calc-btn" onclick="calculate()" data-en="Calculate My Returns 🚀" data-hi="रिटर्न की गणना करें 🚀">Calculate My Returns 🚀</button>
+    </div>
+    <div class="result-box">
+      <h3>📈 <span data-en="Your Wealth Projection" data-hi="आपका धन प्रक्षेपण">Your Wealth Projection</span></h3>
+      <div class="result-big">
+        <div class="result-label" data-en="Total Corpus at Maturity" data-hi="परिपक्वता पर कुल कोष">Total Corpus at Maturity</div>
+        <div class="result-value" id="totalCorpus">—</div>
+      </div>
+      <div class="result-breakdown">
+        <div class="breakdown-row"><span class="breakdown-label">💸 Total Amount Invested</span><span class="breakdown-val" id="totalInvested">—</span></div>
+        <div class="divider"></div>
+        <div class="breakdown-row"><span class="breakdown-label">✨ Total Returns Earned</span><span class="breakdown-val green" id="totalReturns">—</span></div>
+        <div class="divider"></div>
+        <div class="breakdown-row"><span class="breakdown-label">📊 Wealth Multiplier</span><span class="breakdown-val" id="multiplier">—</span></div>
+      </div>
+      <div class="chart-container"><canvas id="sipChart"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ COMPARISON TOOL ════════════ -->
+<section id="compare" class="comparison-section">
+  <div class="section-label" data-en="Investment Comparison" data-hi="निवेश तुलना">Investment Comparison</div>
+  <div class="section-title" data-en="FD vs SIP vs Gold — Who Wins?" data-hi="FD vs SIP vs Gold — कौन जीतेगा?">FD vs SIP vs Gold<br>— Who Wins?</div>
+  <p class="section-sub" data-en="Enter your investment amount and years to compare instruments side by side." data-hi="अपनी राशि और वर्ष दर्ज करें और देखें कौन जीता।">Enter your investment amount and years to see how different instruments perform side by side.</p>
+
+  <div class="comp-controls reveal">
+    <div class="comp-input-group">
+      <label data-en="Monthly Amount (₹)" data-hi="मासिक राशि (₹)">Monthly Amount (₹)</label>
+      <input class="comp-input" type="number" id="compAmount" value="10000" min="100">
+    </div>
+    <div class="comp-input-group">
+      <label data-en="Investment Years" data-hi="निवेश वर्ष">Investment Years</label>
+      <input class="comp-input" type="number" id="compYears" value="10" min="1" max="40">
+    </div>
+    <button class="comp-btn" onclick="runComparison()" data-en="Compare Now →" data-hi="अभी तुलना करें →">Compare Now →</button>
+  </div>
+
+  <div class="comp-results reveal" id="compResults">
+    <div class="comp-card" id="compFD">
+      <div class="comp-icon">🏦</div>
+      <div class="comp-title" data-en="Fixed Deposit" data-hi="सावधि जमा">Fixed Deposit</div>
+      <div class="comp-rate" data-en="~7% annual return" data-hi="~7% वार्षिक रिटर्न">~7% annual return</div>
+      <div class="comp-final" id="fdFinal">—</div>
+      <div class="comp-profit" id="fdProfit">—</div>
+    </div>
+    <div class="comp-card" id="compSIP">
+      <div class="comp-icon">📊</div>
+      <div class="comp-title" data-en="Mutual Fund SIP" data-hi="म्यूचुअल फंड SIP">Mutual Fund SIP</div>
+      <div class="comp-rate" data-en="~12% annual return" data-hi="~12% वार्षिक रिटर्न">~12% annual return</div>
+      <div class="comp-final" id="sipFinal">—</div>
+      <div class="comp-profit" id="sipProfit">—</div>
+    </div>
+    <div class="comp-card" id="compGold">
+      <div class="comp-icon">🪙</div>
+      <div class="comp-title" data-en="Digital Gold" data-hi="डिजिटल गोल्ड">Digital Gold</div>
+      <div class="comp-rate" data-en="~10% annual return" data-hi="~10% वार्षिक रिटर्न">~10% annual return</div>
+      <div class="comp-final" id="goldFinal">—</div>
+      <div class="comp-profit" id="goldProfit">—</div>
+    </div>
+  </div>
+
+  <div class="comp-chart-wrap reveal">
+    <h4>📈 <span data-en="Growth Over Time" data-hi="समय के साथ वृद्धि">Growth Over Time</span></h4>
+    <div class="comp-chart-container"><canvas id="compChart"></canvas></div>
+  </div>
+</section>
+
+<!-- ════════════ BUDGET PLANNER ════════════ -->
+<section id="budget" class="budget-section">
+  <div class="section-label" data-en="Budget Planner" data-hi="बजट प्लानर">Budget Planner</div>
+  <div class="section-title" data-en="Plan Your Money, Rule Your Life" data-hi="पैसे की योजना बनाएं, जीवन पर राज करें">Plan Your Money,<br>Rule Your Life</div>
+  <p class="section-sub" data-en="Enter your monthly income and split it across needs, wants, savings & investments." data-hi="अपनी मासिक आय दर्ज करें और इसे स्मार्ट तरीके से विभाजित करें।">Enter your monthly income and split it smartly across needs, wants, savings & investments.</p>
+
+  <div class="budget-wrapper reveal">
+    <div class="budget-box">
+      <h3>💼 <span data-en="Your Income" data-hi="आपकी आय">Your Income</span></h3>
+      <div class="input-group" style="margin-bottom:1.4rem">
+        <label data-en="Monthly Take-Home Salary (₹)" data-hi="मासिक वेतन (₹)">Monthly Take-Home Salary (₹)</label>
+        <div class="input-row"><span class="input-prefix">₹</span>
+          <input class="calc-input" type="number" id="income" value="50000" min="1000" oninput="updateBudget()">
+        </div>
+      </div>
+      <div class="budget-rule">
+        <button class="rule-btn active" onclick="setRule('50-30-20',this)">50-30-20 Rule</button>
+        <button class="rule-btn" onclick="setRule('60-20-20',this)">60-20-20 Rule</button>
+        <button class="rule-btn" onclick="setRule('custom',this)">Custom</button>
+      </div>
+      <div class="budget-sliders">
+        <div class="budget-row">
+          <div class="budget-row-header"><span class="budget-row-label">🏠 Needs (Housing, Food, Bills)</span><div><span class="budget-row-pct" id="needsPct">50%</span> <span class="budget-row-amt" id="needsAmt">₹25,000</span></div></div>
+          <input class="budget-range" type="range" id="needsRange" min="10" max="80" value="50" oninput="syncSliders('needs')">
+        </div>
+        <div class="budget-row">
+          <div class="budget-row-header"><span class="budget-row-label">🎮 Wants (Entertainment, Shopping)</span><div><span class="budget-row-pct" id="wantsPct">30%</span> <span class="budget-row-amt" id="wantsAmt">₹15,000</span></div></div>
+          <input class="budget-range" type="range" id="wantsRange" min="5" max="60" value="30" oninput="syncSliders('wants')">
+        </div>
+        <div class="budget-row">
+          <div class="budget-row-header"><span class="budget-row-label">💰 Savings (Emergency Fund)</span><div><span class="budget-row-pct" id="savingsPct">10%</span> <span class="budget-row-amt" id="savingsAmt">₹5,000</span></div></div>
+          <input class="budget-range" type="range" id="savingsRange" min="0" max="40" value="10" oninput="syncSliders('savings')">
+        </div>
+        <div class="budget-row">
+          <div class="budget-row-header"><span class="budget-row-label">📈 Investments (SIP, Stocks, Gold)</span><div><span class="budget-row-pct" id="investPct">10%</span> <span class="budget-row-amt" id="investAmt">₹5,000</span></div></div>
+          <input class="budget-range" type="range" id="investRange" min="0" max="50" value="10" oninput="syncSliders('invest')">
+        </div>
+      </div>
+    </div>
+    <div class="budget-results-box">
+      <h3>📊 <span data-en="Your Budget Breakdown" data-hi="आपका बजट विश्लेषण">Your Budget Breakdown</span></h3>
+      <div class="budget-chart-wrap"><canvas id="budgetChart"></canvas></div>
+      <div class="budget-breakdown">
+        <div class="bud-row"><span class="bud-label"><span class="bud-dot" style="background:#ef5350"></span>🏠 Needs</span><span class="bud-val" id="bNeedsVal">₹25,000</span></div>
+        <div class="bud-row"><span class="bud-label"><span class="bud-dot" style="background:#ffd54f"></span>🎮 Wants</span><span class="bud-val" id="bWantsVal">₹15,000</span></div>
+        <div class="bud-row"><span class="bud-label"><span class="bud-dot" style="background:#42a5f5"></span>💰 Savings</span><span class="bud-val" id="bSavingsVal">₹5,000</span></div>
+        <div class="bud-row"><span class="bud-label"><span class="bud-dot" style="background:#00e676"></span>📈 Investments</span><span class="bud-val" id="bInvestVal">₹5,000</span></div>
+      </div>
+      <div class="bud-tip" id="budTip">💡 Good start! You're investing 10% of your income. Try to reach 20% for faster wealth growth.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ GOALS ════════════ -->
+<section id="goals">
+  <div class="section-label" data-en="Investment Goals" data-hi="निवेश लक्ष्य">Investment Goals</div>
+  <div class="section-title" data-en="What Are You Investing For?" data-hi="आप किसके लिए निवेश कर रहे हैं?">What Are You<br>Investing For?</div>
+  <p class="section-sub" data-en="Different goals need different strategies. Pick yours." data-hi="अलग-अलग लक्ष्यों के लिए अलग-अलग रणनीतियां।">Different goals need different strategies. Pick yours to see what works best.</p>
+  <div class="goals-grid reveal">
+    <div class="goal-card emergency">
+      <div class="goal-emoji">🛡️</div>
+      <h3>Emergency Fund</h3>
+      <p>Build 6 months of expenses as a safety net before investing elsewhere. This is your foundation.</p>
+      <div class="goal-instruments"><span class="instrument-tag">Liquid Funds</span><span class="instrument-tag">High-yield Savings</span><span class="instrument-tag">Short FD</span></div>
+    </div>
+    <div class="goal-card wealth">
+      <div class="goal-emoji">📈</div>
+      <h3>Wealth Creation</h3>
+      <p>Long-term wealth building (5+ years). Equity mutual funds and index funds are your best friends.</p>
+      <div class="goal-instruments"><span class="instrument-tag">Index Funds</span><span class="instrument-tag">ELSS</span><span class="instrument-tag">Stocks</span><span class="instrument-tag">NPS</span></div>
+    </div>
+    <div class="goal-card retirement">
+      <div class="goal-emoji">🌅</div>
+      <h3>Retirement Planning</h3>
+      <p>Retire comfortably with passive income. Start at 25, retire at 55 with a solid corpus.</p>
+      <div class="goal-instruments"><span class="instrument-tag">NPS</span><span class="instrument-tag">PPF</span><span class="instrument-tag">EPF</span><span class="instrument-tag">Annuity Funds</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ RISK QUIZ ════════════ -->
+<section id="risk" style="background:var(--bg2)">
+  <div class="section-label" data-en="Risk Profiler" data-hi="जोखिम प्रोफाइलर">Risk Profiler</div>
+  <div class="section-title" data-en="What Kind of Investor Are You?" data-hi="आप किस तरह के निवेशक हैं?">What Kind of Investor<br>Are You?</div>
+  <p class="section-sub" data-en="Answer 4 quick questions to find your investor personality." data-hi="4 त्वरित प्रश्नों के उत्तर दें।">Answer 4 quick questions to find your investor personality and get personalised suggestions.</p>
+  <div class="risk-quiz reveal">
+    <div class="quiz-card">
+      <div style="margin-bottom:1.2rem">
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgressFill" style="width:25%"></div></div>
+        <div class="quiz-q-num" id="quizQNum">Question 1 of 4</div>
+      </div>
+      <div class="quiz-question" id="quizQuestion">If your investment dropped 20%, what would you do?</div>
+      <div class="quiz-options" id="quizOptions">
+        <div class="quiz-opt" onclick="selectOpt(this,0)"><span class="opt-letter">A</span>Sell everything — I can't handle losing money.</div>
+        <div class="quiz-opt" onclick="selectOpt(this,1)"><span class="opt-letter">B</span>Feel worried but hold and wait for recovery.</div>
+        <div class="quiz-opt" onclick="selectOpt(this,2)"><span class="opt-letter">C</span>Stay calm — markets recover. I'd review my strategy.</div>
+        <div class="quiz-opt" onclick="selectOpt(this,3)"><span class="opt-letter">D</span>Buy more! It's a great discount opportunity.</div>
+      </div>
+      <div class="quiz-result" id="quizResult">
+        <div class="result-profile" id="resultProfile">🛡️</div>
+        <div class="result-title"  id="resultTitle"></div>
+        <div class="result-desc"   id="resultDesc"></div>
+        <button class="calc-btn" onclick="resetQuiz()" style="max-width:200px;margin:0 auto" data-en="Retake Quiz" data-hi="फिर से परीक्षा दें">Retake Quiz</button>
+      </div>
+      <div class="quiz-nav" id="quizNav">
+        <button class="quiz-btn quiz-back" onclick="prevQ()" id="backBtn" style="opacity:0.3;pointer-events:none">← Back</button>
+        <button class="quiz-btn quiz-next" onclick="nextQ()" id="nextBtn">Next →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer>
+  <div class="footer-logo">InvestIQ</div>
+  <p data-en="Empowering every Indian to take their first step toward financial freedom. Education first, always."
+     data-hi="हर भारतीय को वित्तीय स्वतंत्रता की ओर पहला कदम उठाने के लिए सशक्त बनाना।">
+    Empowering every Indian to take their first step toward financial freedom. Education first, always.
+  </p>
+  <div class="footer-links">
+    <a href="#">About</a><a href="#">Privacy</a><a href="#">Disclaimer</a><a href="#">Contact</a>
+  </div>
+  <p class="footer-copy">⚠️ For educational purposes only. Consult a SEBI-registered advisor before investing.</p>
+  <p class="footer-copy" style="margin-top:0.4rem">© 2025 InvestIQ v2. Built with ❤️ for India's first-time investors.</p>
+</footer>
+
+<!-- ════════════ SCRIPTS (load order matters) ════════════ -->
+<script src="js/cursor.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/glossary.js"></script>
+<script src="js/calculator.js"></script>
+<script src="js/comparison.js"></script>
+<script src="js/budget.js"></script>
+<script src="js/quiz.js"></script>
+
+<!-- Init: run everything after full page + Chart.js loads -->
+<script>
+  window.addEventListener('load', () => {
+    calculate();
+    runComparison();
+    updateBudget();
+  });
+</script>
+
+</body>
+</html>

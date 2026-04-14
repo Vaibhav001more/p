@@ -1,0 +1,115 @@
+/* ═══════════════════════════════════════
+   InvestIQ v2 — Components Styles
+   File: css/components.css
+   Covers: How It Works, Learn, Glossary,
+           Goals, Risk Quiz
+═══════════════════════════════════════ */
+
+/* ── HOW IT WORKS ── */
+.hiw { background:var(--bg2); }
+.hiw-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:3rem; }
+.hiw-card {
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;padding:1.8rem 1.4rem;
+  position:relative;overflow:hidden;transition:all 0.3s;cursor:default;
+}
+.hiw-card:hover { border-color:rgba(0,230,118,0.3);transform:translateY(-4px);box-shadow:var(--shadow); }
+.hiw-num { font-family:'Space Mono',monospace;font-size:3rem;font-weight:700;color:rgba(0,230,118,0.06);position:absolute;top:0.5rem;right:1rem;line-height:1; }
+.hiw-icon { width:44px;height:44px;border-radius:12px;background:rgba(0,230,118,0.1);border:1px solid rgba(0,230,118,0.2);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1rem; }
+.hiw-card h3 { font-size:1rem;font-weight:700;margin-bottom:0.4rem; }
+.hiw-card p  { font-size:0.84rem;color:var(--text2);line-height:1.6; }
+
+/* ── LEARN SECTION ── */
+.learn-grid { display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem; }
+.topic-card {
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:1.4rem;
+  display:flex;gap:1rem;align-items:flex-start;
+  margin-bottom:0.9rem;cursor:pointer;transition:all 0.2s;
+}
+.topic-card:hover { border-color:rgba(0,230,118,0.3);transform:translateX(4px); }
+.topic-icon { width:42px;height:42px;min-width:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem; }
+.topic-content h4 { font-size:0.95rem;font-weight:600;margin-bottom:0.25rem; }
+.topic-content p  { font-size:0.83rem;color:var(--text2);line-height:1.5; }
+.topic-badge { margin-top:0.4rem;display:inline-block;font-size:0.7rem;padding:0.12rem 0.5rem;border-radius:4px;font-weight:600; }
+.badge-beginner { background:rgba(0,230,118,0.1);color:var(--accent); }
+.badge-inter    { background:rgba(255,213,79,0.1);color:var(--gold); }
+.badge-adv      { background:rgba(255,82,82,0.1);color:var(--red); }
+
+/* ── GLOSSARY BOX ── */
+.glossary-box { background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.4rem;height:fit-content; }
+.glossary-box h3 { font-size:0.95rem;font-weight:700;margin-bottom:0.9rem;color:var(--accent); }
+.glossary-search {
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:8px;padding:0.65rem 0.9rem;
+  color:var(--text);font-family:'DM Sans',sans-serif;
+  font-size:0.88rem;width:100%;margin-bottom:0.9rem;
+  outline:none;transition:border-color 0.2s;
+}
+.glossary-search:focus { border-color:var(--accent); }
+.glossary-terms { display:flex;flex-direction:column;gap:0.55rem;max-height:420px;overflow-y:auto; }
+.term-item { padding:0.7rem 0.9rem;background:var(--surface2);border-radius:8px;cursor:pointer;transition:all 0.2s; }
+.term-item:hover { background:rgba(0,230,118,0.06); }
+.term-word { font-size:0.83rem;font-weight:700;color:var(--accent2); }
+.term-def  { font-size:0.76rem;color:var(--text2);margin-top:0.15rem;line-height:1.4; }
+
+/* ── GOALS ── */
+.goals-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem; }
+.goal-card {
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;padding:1.7rem;
+  transition:all 0.3s;cursor:pointer;position:relative;overflow:hidden;
+}
+.goal-card:hover { transform:translateY(-5px);border-color:rgba(0,230,118,0.3);box-shadow:var(--shadow); }
+.goal-card::before { content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0; }
+.goal-card.emergency::before { background:var(--gold); }
+.goal-card.wealth::before    { background:var(--accent); }
+.goal-card.retirement::before{ background:#7c4dff; }
+.goal-emoji { font-size:2rem;margin-bottom:0.9rem; }
+.goal-card h3 { font-size:1rem;font-weight:700;margin-bottom:0.4rem; }
+.goal-card p  { font-size:0.83rem;color:var(--text2);line-height:1.6;margin-bottom:1.1rem; }
+.goal-instruments { display:flex;flex-wrap:wrap;gap:0.35rem; }
+.instrument-tag { font-size:0.71rem;padding:0.18rem 0.55rem;border-radius:4px;border:1px solid var(--border);color:var(--text2);font-weight:500; }
+
+/* ── RISK QUIZ ── */
+.risk-quiz { margin-top:2.8rem;max-width:680px; }
+.quiz-card { background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem; }
+.quiz-progress-bar { background:var(--surface2);border-radius:4px;height:4px; }
+.quiz-progress-fill { background:var(--accent);height:100%;border-radius:4px;transition:width 0.4s; }
+.quiz-q-num { font-size:0.76rem;color:var(--muted);margin-top:0.35rem; }
+.quiz-question { font-size:1.05rem;font-weight:600;margin:1.3rem 0;line-height:1.5; }
+.quiz-options { display:flex;flex-direction:column;gap:0.65rem; }
+.quiz-opt {
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:10px;padding:0.85rem 1.1rem;
+  cursor:pointer;transition:all 0.2s;font-size:0.88rem;
+  display:flex;align-items:center;gap:0.75rem;
+}
+.quiz-opt:hover  { border-color:var(--accent);color:var(--accent); }
+.quiz-opt.selected { border-color:var(--accent);background:rgba(0,230,118,0.08);color:var(--accent); }
+.opt-letter { width:22px;height:22px;border-radius:6px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.73rem;font-weight:700;flex-shrink:0; }
+.quiz-result { text-align:center;padding:1.5rem;display:none; }
+.result-profile { font-size:2.8rem;margin-bottom:0.4rem; }
+.result-title { font-size:1.2rem;font-weight:700;color:var(--accent);margin-bottom:0.4rem; }
+.result-desc  { font-size:0.88rem;color:var(--text2);line-height:1.6;margin-bottom:1.3rem; }
+.quiz-nav { display:flex;justify-content:space-between;margin-top:1.4rem; }
+.quiz-btn { padding:0.55rem 1.3rem;border-radius:8px;font-size:0.88rem;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif; }
+.quiz-back { background:transparent;border:1px solid var(--border);color:var(--text2); }
+.quiz-next { background:var(--accent);border:none;color:var(--bg); }
+.quiz-next:hover { filter:brightness(1.1); }
+
+/* ── FOOTER ── */
+footer { background:var(--surface);border-top:1px solid var(--border);padding:3.5rem 4rem;text-align:center; }
+.footer-logo { font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--accent);margin-bottom:0.8rem; }
+footer p { color:var(--muted);font-size:0.83rem;line-height:1.6;max-width:400px;margin:0 auto 1.5rem; }
+.footer-links { display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-bottom:1.5rem; }
+.footer-links a { color:var(--text2);text-decoration:none;font-size:0.83rem;transition:color 0.2s; }
+.footer-links a:hover { color:var(--accent); }
+.footer-copy { font-size:0.76rem;color:var(--muted); }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hiw-grid { grid-template-columns:1fr 1fr; }
+  .learn-grid { grid-template-columns:1fr; }
+  .goals-grid { grid-template-columns:1fr; }
+}
